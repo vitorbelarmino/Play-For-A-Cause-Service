@@ -5,6 +5,7 @@ import { UserRepository } from './prisma/db/User.repository';
 import { PrismaClient } from '@prisma/client';
 import { ValidationMiddleware } from './middleware/userValidation.middleware';
 import { BCrypt } from 'src/Utils/BCrypt';
+import { LoginValidationMiddleware } from './middleware/LoginValidation.middleware';
 
 @Module({
   controllers: [UserController],
@@ -21,6 +22,10 @@ import { BCrypt } from 'src/Utils/BCrypt';
 })
 export class UsersModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ValidationMiddleware).forRoutes('*');
+    consumer
+      .apply(ValidationMiddleware)
+      .forRoutes('user/create')
+      .apply(LoginValidationMiddleware)
+      .forRoutes('user/login');
   }
 }

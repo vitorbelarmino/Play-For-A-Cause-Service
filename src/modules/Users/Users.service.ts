@@ -23,4 +23,15 @@ export class UserService {
     const user = await this.userRepository.findByEmail(email);
     return user;
   }
+
+  async login(email: string, password: string) {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      throw new ConflictException('Email address not registered.');
+    }
+    const match = await this.bcrypt.comparePasswords(password, user.password);
+    if (!match) {
+      throw new ConflictException('Incorrect password.');
+    }
+  }
 }
