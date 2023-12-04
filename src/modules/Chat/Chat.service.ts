@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { IChatRepository } from 'src/prisma/db/interface/IChat.repository';
+import { addUserToChatInfo } from './dto/addUserToChatInfo';
 
 export class ChatService {
   constructor(
@@ -8,5 +9,9 @@ export class ChatService {
   ) {}
   async createChat(): Promise<void> {
     await this.chatRepository.createChat();
+  }
+
+  async addUsersToChat(info: addUserToChatInfo): Promise<void> {
+    await this.chatRepository.addUserToChat(info);
   }
 }

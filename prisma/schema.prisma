@@ -17,7 +17,7 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  chatID    String
+  chatID    String?
   chats     Chat?   @relation(fields: [chatID], references: [id])
 }
 
