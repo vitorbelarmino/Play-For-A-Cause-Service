@@ -1,4 +1,4 @@
-import { addUserToChatInfo } from 'src/modules/Chat/dto/addUserToChatInfo';
+import { addUserToChatInfo } from 'src/modules/Chats/dto/addUserToChatInfo';
 
 export abstract class IChatRepository {
   abstract createChat(): Promise<void>;

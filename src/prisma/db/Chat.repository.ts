@@ -1,7 +1,7 @@
 import { Inject, NotFoundException } from '@nestjs/common';
 import { IChatRepository } from './interface/IChat.repository';
 import { PrismaClient } from '@prisma/client';
-import { addUserToChatInfo } from 'src/modules/Chat/dto/addUserToChatInfo';
+import { addUserToChatInfo } from 'src/modules/Chats/dto/addUserToChatInfo';
 
 export class ChatRepository implements IChatRepository {
   constructor(@Inject('PrismaClient') private readonly db: PrismaClient) {}
