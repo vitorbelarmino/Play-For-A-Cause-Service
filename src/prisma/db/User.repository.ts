@@ -1,8 +1,7 @@
 import { Inject } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 import { IUserRepository } from './interface/IUser.repository';
-import { createUserInput } from '../../dto/createUserInput';
-import { User } from '../../entities/User.entity';
+import { createUserInput } from 'src/modules/Users/dto/createUserInput';
 
 export class UserRepository implements IUserRepository {
   constructor(@Inject('PrismaClient') private readonly db: PrismaClient) {}
