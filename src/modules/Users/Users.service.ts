@@ -2,6 +2,7 @@ import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { createUserInput } from './dto/createUserInput';
 import { BCrypt } from 'src/Utils/BCrypt';
 import { IUserRepository } from 'src/prisma/db/interface/IUser.repository';
+import { loginInput } from './dto/loginInput';
 
 @Injectable()
 export class UserService {
@@ -24,14 +25,20 @@ export class UserService {
     return user;
   }
 
-  async login(email: string, password: string) {
-    const user = await this.findByEmail(email);
+  async login(info: loginInput) {
+    const user = await this.findByEmail(info.email);
     if (!user) {
       throw new ConflictException('Email address not registered.');
     }
-    const match = await this.bcrypt.comparePasswords(password, user.password);
+    const match = await this.bcrypt.comparePasswords(
+      info.password,
+      user.password,
+    );
     if (!match) {
       throw new ConflictException('Incorrect password.');
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...result } = user;
+    return result;
   }
 }

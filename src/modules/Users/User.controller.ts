@@ -16,6 +16,6 @@ export class UserController {
   @HttpCode(200)
   @Post('/login')
   async login(@Body() login: loginInput) {
-    return this.userService.login(login.email, login.password);
+    return this.userService.login(login);
   }
 }
