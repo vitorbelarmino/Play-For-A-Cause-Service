@@ -23,7 +23,6 @@ export class UserController {
   @Get('/:id')
   async getUser(@Param() params: { id: string }) {
     const { id } = params;
-    console.log(id);
     return this.userService.findById(id);
   }
 }
