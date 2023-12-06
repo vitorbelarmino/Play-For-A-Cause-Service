@@ -1,10 +1,11 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { UserController } from './User.controller';
 import { UserService } from './Users.service';
-import { UserRepository } from './prisma/db/User.repository';
 import { PrismaClient } from '@prisma/client';
 import { ValidationMiddleware } from './middleware/userValidation.middleware';
 import { BCrypt } from 'src/Utils/BCrypt';
+import { LoginValidationMiddleware } from './middleware/LoginValidation.middleware';
+import { UserRepository } from 'src/prisma/db/User.repository';
 
 @Module({
   controllers: [UserController],
@@ -21,6 +22,10 @@ import { BCrypt } from 'src/Utils/BCrypt';
 })
 export class UsersModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ValidationMiddleware).forRoutes('*');
+    consumer
+      .apply(ValidationMiddleware)
+      .forRoutes('user/create')
+      .apply(LoginValidationMiddleware)
+      .forRoutes('user/login');
   }
 }
