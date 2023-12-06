@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
-import { ICreateMessageInput } from 'src/modules/Messages/dto/createMessageInput';
+import { ICreateMessageInput } from '../../modules/Messages/dto/createMessageInput';
 
 export class MessageRepository implements MessageRepository {
   constructor(

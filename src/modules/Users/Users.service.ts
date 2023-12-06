@@ -1,7 +1,7 @@
 import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { createUserInput } from './dto/createUserInput';
-import { BCrypt } from 'src/Utils/BCrypt';
-import { IUserRepository } from 'src/prisma/db/interface/IUser.repository';
+import { BCrypt } from '../../Utils/BCrypt';
+import { IUserRepository } from '../../prisma/db/interface/IUser.repository';
 import { loginInput } from './dto/loginInput';
 
 @Injectable()

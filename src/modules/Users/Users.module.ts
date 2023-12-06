@@ -3,9 +3,9 @@ import { UserController } from './User.controller';
 import { UserService } from './Users.service';
 import { PrismaClient } from '@prisma/client';
 import { ValidationMiddleware } from './middleware/userValidation.middleware';
-import { BCrypt } from 'src/Utils/BCrypt';
+import { BCrypt } from '../../Utils/BCrypt';
 import { LoginValidationMiddleware } from './middleware/LoginValidation.middleware';
-import { UserRepository } from 'src/prisma/db/User.repository';
+import { UserRepository } from '../../prisma/db/User.repository';
 
 @Module({
   controllers: [UserController],
