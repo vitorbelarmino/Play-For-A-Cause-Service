@@ -1,5 +1,6 @@
 export interface ICreateMessageInput {
   text: string;
-  authorId: string;
+  userId: string;
+  userName: string;
   chatId: string;
 }

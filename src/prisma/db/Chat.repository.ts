@@ -57,6 +57,7 @@ export class ChatRepository implements IChatRepository {
     const chat = await this.db.chat.findFirst({
       include: {
         users: true,
+        messages: true,
       },
     });
     return chat;

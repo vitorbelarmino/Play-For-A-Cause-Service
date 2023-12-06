@@ -41,4 +41,12 @@ export class UserService {
     const { password, ...result } = user;
     return result;
   }
+
+  async findById(id: string) {
+    const user = await this.userRepository.findById(id);
+    if (!user) {
+      throw new ConflictException('User not found.');
+    }
+    return user;
+  }
 }

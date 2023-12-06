@@ -25,4 +25,15 @@ export class UserRepository implements IUserRepository {
     });
     return user;
   }
+
+  async findById(id: string): Promise<User | null> {
+    console.log(id);
+    const user = await this.db.user.findUnique({
+      where: {
+        id,
+      },
+    });
+    console.log(user);
+    return user;
+  }
 }

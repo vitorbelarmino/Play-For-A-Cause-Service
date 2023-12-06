@@ -9,12 +9,12 @@ export class MessageRepository implements MessageRepository {
   ) {}
 
   async createMessage(messages: ICreateMessageInput): Promise<void> {
-    console.log(messages);
     await this.db.message.create({
       data: {
         text: messages.text,
         chatId: messages.chatId,
-        authorId: messages.authorId,
+        userId: messages.userId,
+        userName: messages.userName,
       },
     });
   }
