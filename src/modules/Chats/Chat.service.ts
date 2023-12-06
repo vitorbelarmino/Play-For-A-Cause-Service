@@ -1,8 +1,7 @@
 import { ConflictException, Inject } from '@nestjs/common';
-import { IChatRepository } from 'src/prisma/db/interface/IChat.repository';
+import { IChatRepository } from '../../prisma/db/interface/IChat.repository';
 import { addUserToChatInfo } from './dto/addUserToChatInfo';
-import { Chat } from 'src/prisma/db/entities/Chat.entity';
-
+import { Chat } from '../../prisma/db/entities/Chat.entity';
 export class ChatService {
   constructor(
     @Inject('IChatRepository')

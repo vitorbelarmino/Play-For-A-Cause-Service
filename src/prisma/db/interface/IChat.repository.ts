@@ -1,4 +1,4 @@
-import { addUserToChatInfo } from 'src/modules/Chats/dto/addUserToChatInfo';
+import { addUserToChatInfo } from '../../../modules/Chats/dto/addUserToChatInfo';
 import { Chat } from '../entities/Chat.entity';
 
 export abstract class IChatRepository {
