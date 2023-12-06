@@ -2,15 +2,17 @@ import { Inject, NotFoundException } from '@nestjs/common';
 import { IChatRepository } from './interface/IChat.repository';
 import { PrismaClient } from '@prisma/client';
 import { addUserToChatInfo } from 'src/modules/Chats/dto/addUserToChatInfo';
+import { Chat } from './entities/Chat.entity';
 
 export class ChatRepository implements IChatRepository {
   constructor(@Inject('PrismaClient') private readonly db: PrismaClient) {}
-  async createChat(): Promise<void> {
-    await this.db.chat.create({
+  async createChat(): Promise<string> {
+    const data = await this.db.chat.create({
       data: {
         name: 'Public Chat',
       },
     });
+    return data.id;
   }
 
   async addUserToChat(info: addUserToChatInfo): Promise<void> {
@@ -49,5 +51,14 @@ export class ChatRepository implements IChatRepository {
         },
       },
     });
+  }
+
+  async getOne(): Promise<Chat | null> {
+    const chat = await this.db.chat.findFirst({
+      include: {
+        users: true,
+      },
+    });
+    return chat;
   }
 }
