@@ -8,4 +8,3 @@ export const loginSchema = z.object({
     .string({ required_error: 'The "password" field is required.' })
     .min(3, 'The "password" field must be at least 3 characters long.'),
 });
-
