@@ -1,5 +1,5 @@
 import { Inject } from '@nestjs/common';
-import { IMessageRepository } from 'src/prisma/db/interface/IMesages.repository';
+import { IMessageRepository } from '../../prisma/db/interface/IMessages.repository';
 import { ICreateMessageInput } from './dto/createMessageInput';
 
 export class MessagesService {

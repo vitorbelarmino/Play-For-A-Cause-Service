@@ -1,4 +1,4 @@
-import { createUserInput } from 'src/modules/Users/dto/createUserInput';
+import { createUserInput } from '../../../modules/Users/dto/createUserInput';
 import { User } from '../entities/User.entity';
 
 export abstract class IUserRepository {
